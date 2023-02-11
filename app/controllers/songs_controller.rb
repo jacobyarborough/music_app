@@ -20,6 +20,8 @@ class SongsController < ApplicationController
     song.artist_id = params[:id]
     song.save!
 
+    flash[:notice] = "Created a new song!"
+
     redirect_to "/songs/#{song.id}"
   end 
 
