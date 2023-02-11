@@ -1,0 +1,9 @@
+<%= form_with url: "/artists/#{@artist.id}/songs", method: :post, local: true do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.label :length %>
+  <%= form.number_field :length, step: 1%>
+  <%= form.label :play_count, "Play Count"  %>
+  <%= form.number_field :play_count %>
+  <%= form.submit "Create Song" %>
+<% end %>
