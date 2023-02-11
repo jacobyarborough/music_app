@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get "/sign_up", to: "registrations#new"
 
-  get "/songs", to: "songs#index"
+  get "/songs", to: "songs#index", as: :songs #keeps the name the same
   get "/songs/:id", to: "songs#show"
 
   get "/artists", to: "artists#index"
