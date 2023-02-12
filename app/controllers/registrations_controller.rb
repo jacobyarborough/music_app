@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController 
   def new 
-    @user = User.new(params[:user_params])
+    @user = User.new
   end 
 
   def create 
