@@ -19,6 +19,10 @@ class PasswordResetController < ApplicationController
   end
   
   def edit 
+    @user = User.find_signed!(params[:token], purpose: "password_reset")
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    flash[:notice] = "Link has expired"
+    redirect_to password_reset_path
   end 
 
   def update 
