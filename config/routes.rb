@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get "/password", to: "passwords#edit"
   patch "/password", to: "passwords#update"
 
+  get "/password/reset", to: "password_reset#new"
+  post "/password/reset", to: "password_reset#create"
+
   get "/songs", to: "songs#index", as: :songs #keeps the name the same
   get "/songs/:id", to: "songs#show"
 
