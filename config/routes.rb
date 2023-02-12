@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/", to: "welcome#index"
 
   get "/sign_up", to: "registrations#new"
+  post "/sign_up", to: "registrations#create"
 
   get "/songs", to: "songs#index", as: :songs #keeps the name the same
   get "/songs/:id", to: "songs#show"
