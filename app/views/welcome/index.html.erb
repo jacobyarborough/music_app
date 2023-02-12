@@ -2,8 +2,3 @@
   <h1>Welcome to the SetList App!</h1>
 </div>
 
-<% if Current.user %>
-  Logged in as: <%= @user.email %>
-  <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-primary" %>
-<% end %>
-
