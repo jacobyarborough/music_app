@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   delete "/logout", to: "sessions#destroy"
 
+  get "/password", to: "passwords#edit"
+  patch "/password", to: "passwords#update"
+
   get "/songs", to: "songs#index", as: :songs #keeps the name the same
   get "/songs/:id", to: "songs#show"
 
