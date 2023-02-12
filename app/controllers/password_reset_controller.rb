@@ -14,7 +14,7 @@ class PasswordResetController < ApplicationController
       PasswordMailer.with(user: @user).reset.deliver_now
     end 
 
-    flash.now[:notice] = "If that email is found, a reset email link will be sent"
+    flash[:notice] = "If that email is found, a reset email link will be sent"
     redirect_to root_path
   end
   
