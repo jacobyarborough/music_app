@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get "/sign_up", to: "registrations#new"
   post "/sign_up", to: "registrations#create"
+  delete "/logout", to: "sessions#destroy"
 
   get "/songs", to: "songs#index", as: :songs #keeps the name the same
   get "/songs/:id", to: "songs#show"
