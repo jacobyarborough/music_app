@@ -26,5 +26,19 @@ class PasswordResetController < ApplicationController
   end 
 
   def update 
+    @user = User.find_signed!(params[:token], purpose: "password_reset")
+    if @user.update(user_params)
+      flash[:notice] = "Password has been successfully updated"
+      redirect_to sign_in_path
+    else 
+      flash[:alert] = "Something went wrong, please try again"
+      redirect_to password_reset_edit_path(token: params[:token])
+    end 
+  end 
+
+  private 
+
+  def user_params 
+    params.require(:user).permit(:password, :password_confirmation)
   end 
 end
