@@ -7,12 +7,18 @@ RSpec.describe "Welcome Page", type: :feature do
     expect(current_path).to eq("/")
     expect(page).to have_content("Welcome to the SetList App!")
 
-    click_link("Artists")
+    within "#banner-artist" do 
+      click_link("Artists")
+    end 
+
     expect(page). to have_current_path("/artists")
     click_link("Home")
     expect(page).to have_current_path("/")
 
-    click_link("Songs")
+    within("#banner-song") do
+      click_link("Songs")
+    end
+
     expect(page). to have_current_path("/songs")
     click_link("Home")
     expect(page).to have_current_path("/")
