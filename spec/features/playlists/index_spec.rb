@@ -16,7 +16,7 @@ RSpec.describe "playlists index page", type: :feature do
 
     rock = breadbox.playlists.create!(name: "Classic Rock")
 
-    purple = uplifting_sounds.songs.create!(title: "Purple Rain", length: 600, play_count = 8945)
+    purple = uplifting_sounds.songs.create!(title: "Purple Rain", length: 600, play_count: 8945, artist: prince)
 
     PlaylistSong.create!(song: purple, playlist: jams)
     PlaylistSong.create!(song: place, playlist: jams)
