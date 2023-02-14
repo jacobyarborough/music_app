@@ -15,6 +15,9 @@
         <li class="nav-item", id="banner-song">
           <%= link_to "Songs", songs_path, class: "nav-link" %>
         </li>
+        <li class="nav-item", id="banner-playlist">
+          <%= link_to "Playlists", playlists_path, class: "nav-link" %>
+        </li>
         <li class="nav-item dropdown">
           <% if current_page?(:controller => "welcome", :action=> "index") %>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,20 +26,28 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/artists">Artists</a></li>
               <li><a class="dropdown-item" href="/songs">Songs</a></li>
+              <li><a class="dropdown-item" href="/playlists">Playlists</a></li>
             </ul>
-          <% elsif current_page?(:controller => "artists", :action=> "index") %>
+          <% elsif current_page?(:controller => "artists", :action => "index") %>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Artists
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/artists/new">New Artist</a></li>
             </ul>
-          <% elsif current_page?(:controller => "songs", :action=> "index") %>
+          <% elsif current_page?(:controller => "songs", :action => "index") %>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Songs
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/songs">New Song</a></li>
+            </ul>
+          <% elsif current_page?(:controller => "playlists", :action => "index") %>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Playlists
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/playlists/new">New Playlist</a></li>
             </ul>
           <% end %>
         </li>
