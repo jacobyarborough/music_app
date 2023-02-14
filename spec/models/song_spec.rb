@@ -7,6 +7,12 @@ RSpec.describe Song, type: :model do
     it { should validate_presence_of :play_count }
   end 
 
+  describe "relationships" do 
+    it { should belong_to :artist }
+    it { should have_many :playlist_songs }
+    it { should have_many(:playlists).through(:playlist_songs) }
+  end 
+
   describe "class methods" do 
     describe ".song_count" do 
       it "returns the number of songs in the db" do 
