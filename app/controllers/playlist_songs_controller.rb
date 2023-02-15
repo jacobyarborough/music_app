@@ -1,4 +1,8 @@
 class PlaylistSongsController < ApplicationController 
+  def new 
+    binding.pry
+  end 
+
   def destroy 
     playlist_song = PlaylistSong.find_by(playlist_id: params[:playlist_id], song_id: params[:song_id])
     playlist_song.destroy
