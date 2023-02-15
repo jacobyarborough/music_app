@@ -36,8 +36,8 @@ Rails.application.routes.draw do
   post "/artists/:id/songs", to: "songs#create"
   get "/artists/:artist_id/songs", to: "songs#index"
 
+  delete "playlist_songs/:playlist_id/:song_id", to: "playlist_songs#destroy"
+
   get "/playlists", to: "playlists#index"
   get "/playlists/:playlist_id", to: "playlists#show"
-
-  delete "playlists/:playlist_id/songs/:song_id", to: "playlist_songs#destroy"
 end
