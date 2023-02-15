@@ -1,7 +1,10 @@
 <h1><%= @playlist.name %></h1>
 
 <% @playlist.songs.each do |song| %>
-  <%= song.title %><br>
-  by: <%= song.artist.name%><br>
+  <h4>
+    <%= song.title %>;
+    by: <%= song.artist.name%>
+  </h4>
+  <%= button_to "Remove", "playlists/#{@playlist.id}/songs/#{song.id}", method: :delete, class: "btn btn-outline-secondary" %>
   <br>
 <% end %>

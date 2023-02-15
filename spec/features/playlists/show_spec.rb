@@ -23,4 +23,7 @@ RSpec.describe "playlists show page", type: :feature do
     expect(page).to have_content(place.title)
     expect(page).to have_content(hello.title)
   end 
+
+  it "allows you to remove songs from the playlist" do 
+  end 
 end 

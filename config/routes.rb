@@ -38,4 +38,6 @@ Rails.application.routes.draw do
 
   get "/playlists", to: "playlists#index"
   get "/playlists/:playlist_id", to: "playlists#show"
+
+  delete "playlists/:playlist_id/songs/:song_id", to: "playlist_songs#destroy"
 end
