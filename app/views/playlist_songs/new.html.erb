@@ -1,0 +1,13 @@
+<h1>Add Song to Playlist</h1>
+
+<%= form_with model: @playlist_song, url: "/playlist_songs", method: :post do |form| %>
+  <div class="mb-3">
+    <%= form.hidden_field :song_id, value: @song.id %>
+  </div>
+  <div class="mb-3">
+    <%= form.select :playlist_id, @playlists.map { |playlist| [playlist.name, playlist.id] }, {}, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.submit "Add song to playlist", class: "btn btn-primary"%>
+  </div>
+<% end %>
