@@ -2,6 +2,6 @@
 
 <% @playlists.each do |playlist| %>
   <div id="playlist-<%= playlist.id%>">
-    <h2><%= playlist.name %></h2> 
+    <h2><%= link_to playlist.name, "/playlists/#{playlist.id}" %></h2> 
   </div>
 <% end %>
