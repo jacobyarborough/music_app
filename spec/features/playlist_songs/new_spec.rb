@@ -11,8 +11,11 @@ RSpec.describe "Playlist Songs new page" do
     # PlaylistSong.create!(song: place, playlist: jams)
 
     visit "/songs/#{hello.id}"
-    click_on "Add to Playlist" 
+    click_button "Add song to a playlist" 
 
-    
+    click_button("Add song to playlist")
+
+    expect(page).to have_current_path("/songs/#{hello.id}")
+    expect(jams.songs).to include(hello)
   end
 end 

@@ -4,7 +4,7 @@
   <div class="mb-3">
     <%= form.hidden_field :song_id, value: @song.id %>
   </div>
-  <div class="mb-3">
+  <div class="mb-3", id="playlist">
     <%= form.select :playlist_id, @playlists.map { |playlist| [playlist.name, playlist.id] }, {}, class: "form-control" %>
   </div>
   <div class="mb-3">
