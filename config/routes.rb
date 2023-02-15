@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   get "/artists/:artist_id/songs", to: "songs#index"
 
   get "/playlists", to: "playlists#index"
+  get "/playlists/:playlist_id", to: "playlists#show"
 end
