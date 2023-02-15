@@ -19,8 +19,8 @@ RSpec.describe "playlists show page", type: :feature do
 
     visit "/playlists/#{jams.id}"
 
-    expect(page).to have_content(jams.name)
-    expect(page).to have_content(place.name)
-    expect(page).to have_content(hello.name)
+    expect(page).to have_content(breadbox.title)
+    expect(page).to have_content(place.title)
+    expect(page).to have_content(hello.title)
   end 
 end 

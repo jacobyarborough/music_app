@@ -28,6 +28,10 @@ RSpec.describe "playlists index page", type: :feature do
 
     within("#playlist-#{rock.id}") do 
       expect(page).to have_content(rock.name)
+      click_on("#{rock.name}")
+      expect(page).to have_current_path("/playlists/#{rock.id}")
+      click_on("Home")
+      expect(page).to have_current_path(playlists_path)
     end 
 
     within("#playlist-#{uplifting_sounds.id}") do 
