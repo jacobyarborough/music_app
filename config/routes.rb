@@ -42,4 +42,7 @@ Rails.application.routes.draw do
   get "/playlist_songs/new/:song_id", to: "playlist_songs#new"
   post "/playlist_songs", to: "playlist_songs#create"
   delete "playlist_songs/:playlist_id/:song_id", to: "playlist_songs#destroy"
+
+  get "/cart", to: "cart#index"
+  patch "/cart/:song_id", to: "cart#update"
 end
