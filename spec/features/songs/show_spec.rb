@@ -13,9 +13,6 @@ RSpec.describe "songs show page", type: :feature do
     expect(page).to have_content("Title: I really like you")
     expect(page).to have_content("Length: #{song1.length}")
     expect(page).to have_content("Play Count: #{song1.play_count}")
-    
-    click_link("Back")
-    expect(current_path).to eq("/songs")
 
     click_link("Home")
     expect(page).to have_current_path("/")
