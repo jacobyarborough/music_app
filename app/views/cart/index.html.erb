@@ -1,0 +1,14 @@
+<h1>Your Cart</h1>
+
+<% @items.each do |item, quantity| %>
+  <div class ="mb-3">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title"><%= item.title %></h5>
+        <p class="card-text">Artist: <%= item.artist.name %><br>
+        Play Count: <%= item.play_count %><br>
+        Quantity: <%= quantity %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
