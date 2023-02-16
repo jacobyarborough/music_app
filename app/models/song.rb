@@ -24,4 +24,8 @@ class Song < ApplicationRecord
   def self.top_three(length)
     where("length > ? and updated_at > ?", length, (Time.now.midnight - 3.days)).order(play_count: :desc).limit(3) 
   end 
+
+  def self.get_songs(song_ids)
+    where(id: song_ids).return_in_order
+  end
 end 

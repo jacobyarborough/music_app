@@ -17,4 +17,15 @@ class Cart
   def total_items 
     session_cart_contents.values.sum
   end 
+
+  def get_items 
+    cart_hash = {}
+
+    songs = Song.get_songs(session_cart_contents.keys)
+    songs.each do |song|
+      cart_hash[song] = session_cart_contents[song.id.to_s]
+    end 
+
+    cart_hash
+  end
 end
