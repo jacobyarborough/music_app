@@ -54,9 +54,10 @@ group :development, :test do
   gem "pry"
   gem "rspec-rails"
   gem "simplecov"
-  gem "capybara"
+  gem "capybara" 
   gem "figaro"
   gem "faraday"
+  gem "omniauth-spotify"
 end
 
 group :development do
@@ -73,3 +74,4 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
+gem "omniauth-rails_csrf_protection", "~> 1.0"

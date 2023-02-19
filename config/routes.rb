@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   get "/", to: "welcome#index", as: :root
 
   get "/sign_up", to: "registrations#new"
@@ -45,4 +43,8 @@ Rails.application.routes.draw do
 
   get "/cart", to: "cart#index"
   patch "/cart/:song_id", to: "cart#update"
+
+  get "/auth/spotify/callback", to: "omniauth_callbacks#spotify"
+
+  resources :spotify_accounts
 end
