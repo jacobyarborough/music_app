@@ -1,0 +1,14 @@
+<h1>Linked Spotify Accounts</h1>
+
+<% @spotify_accounts.each do |account| %>
+  <div class ="mb-3">
+    <div class="card" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title"><%= account.username %></h5>
+        <p class="card-text">Name: <%= account.name %><br>
+        Filler Content about your account
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>

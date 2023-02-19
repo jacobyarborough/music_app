@@ -8,7 +8,8 @@ class OmniauthCallbacksController < ApplicationController
       username: auth.info.nickname,
       image: auth.info.image,
       token: auth.credentials.token,
-      refresh_token: auth.credentials.refresh_token
+      refresh_token: auth.credentials.refresh_token,
+      spotify_url: auth.info.urls.spotify
     )
 
     flash[:notice]="Successfully connected account"
