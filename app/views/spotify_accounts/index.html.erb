@@ -1,12 +1,13 @@
 <h1>Linked Spotify Accounts</h1>
 
-<% @spotify_accounts.each do |account| %>
+<% @spotify_accounts.each do |spotify_account| %>
   <div class ="mb-3">
     <div class="card" style="width: 18rem">
       <div class="card-body">
-        <h5 class="card-title"><%= account.username %></h5>
-        <p class="card-text">Name: <%= account.name %><br>
-        Filler Content about your account
+        <h5 class="card-title"><%= spotify_account.username %></h5>
+        <p class="card-text">Name: <%= spotify_account.name %><br>
+        <%= link_to "Go to Spotify", spotify_account.spotify_url, target: :_blank %><br>
+        <%= button_to "Disconnect", spotify_account, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
         </p>
       </div>
     </div>
