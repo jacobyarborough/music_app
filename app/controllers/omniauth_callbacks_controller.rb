@@ -1,7 +1,7 @@
 class OmniauthCallbacksController < ApplicationController
   def spotify
     # Rails.logger.info auth
-
+   
     spotify_account = Current.user.spotify_accounts.where(username: auth.info.nickname).first_or_initialize
     spotify_account.update(
       name: auth.info.name, 

@@ -4,12 +4,15 @@ class WelcomeController < ApplicationController
       @user = User.find_by(id: session[:user_id])
     end 
 
-    # conn = Faraday.get("https://accounts.spotify.com")
+    conn = Faraday.new("https://api.spotify.com")
 
-    # response = Faraday.get("https://accounts.spotify.com/authorize") do |req|
-    #     req.params = {client_id: ENV["spotify_client_id"], response_type: "code", redirect_uri: ENV["spotify_redirect_uri"], scope: ENV["scopes"]}
-    # end 
+    response = conn.get("/v1/browse/featured-playlists") do |req|
+      req.headers = { Authorization: "Bearer #{Current.user.spotify_accounts.first.token}" }
+    end 
 
-    # redirect_to response.headers[:location]
+    content = JSON.parse(response.body, symbolize_names: true)
+
+    @message = content[:message]
+    @featured_playlists = content[:playlists][:items]
   end
 end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_user
+  before_action :set_current_user, :spotify_expired?
   helper_method :cart
 
   def set_current_user 
@@ -15,4 +15,18 @@ class ApplicationController < ActionController::Base
   def cart 
     @cart ||= Cart.new(session[:cart])
   end
+
+  def spotify_expired?
+    conn = Faraday.new("https://api.spotify.com")
+
+    response = conn.get("/v1/browse/featured-playlists") do |req|
+      req.headers = { Authorization: "Bearer #{Current.user.spotify_accounts.first.token}" }
+    end 
+
+    featured_playlists = JSON.parse(response.body, symbolize_names: true)
+
+    if featured_playlists[:error]
+      Current.user.refresh_spotify_token
+    end
+  end 
 end
