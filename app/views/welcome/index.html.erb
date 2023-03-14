@@ -2,26 +2,13 @@
   <h1>Welcome to the SetList App!</h1>
 </div>
 
-<%= button_to "Connect Spotify", "/auth/spotify", data: { turbo: "false" }, method: :post, class: "btn btn-primary"%>
-
-<h2>Featured Today: <%= @message %></h2>
-
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <% @featured_playlists.each do |playlist| %>
-      <div class="carousel-item active">
-        <%= image_tag playlist[:images].first[:url], src: "...", class: "d-block w-100", alt: "...", height: "200", width: "200" %>
-      </div>
-    <% end %>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-
+<% if !(Current.user && Current.user.spotify_accounts) %>
+  <%= button_to "Connect Spotify", "/auth/spotify", data: { turbo: "false" }, method: :post, class: "btn btn-primary"%>
+<% else %>
+  <% @playlists.daily_playlists.each do |playlist| %>
+    <h3><%= link_to playlist.name, playlist.playlist_link, target: :_blank %></h3>
+    <p>by: <%= playlist.owner %><br>
+      <%= link_to "tracks", url: playlist.tracks_link %>
+    </p>
+  <% end %>
+<% end %>

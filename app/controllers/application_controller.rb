@@ -17,16 +17,18 @@ class ApplicationController < ActionController::Base
   end
 
   def spotify_expired?
-    conn = Faraday.new("https://api.spotify.com")
+    if Current.user && Current.user.spotify_accounts
+      conn = Faraday.new("https://api.spotify.com")
 
-    response = conn.get("/v1/browse/featured-playlists") do |req|
-      req.headers = { Authorization: "Bearer #{Current.user.spotify_accounts.first.token}" }
-    end 
+      response = conn.get("/v1/browse/featured-playlists") do |req|
+        req.headers = { Authorization: "Bearer #{Current.user.spotify_accounts.first.token}" }
+      end 
 
-    featured_playlists = JSON.parse(response.body, symbolize_names: true)
+      featured_playlists = JSON.parse(response.body, symbolize_names: true)
 
-    if featured_playlists[:error]
-      Current.user.refresh_spotify_token
+      if featured_playlists[:error]
+        Current.user.refresh_spotify_token
+      end
     end
   end 
 end
